@@ -2,7 +2,6 @@
 
 import React from 'react';
 import Link from 'next/link';
-import Link from 'next/link';
 import PricingTable from '@/components/features/PricingTable';
 import Card from '@/components/ui/Card';
 import Button from '@/components/ui/Button';
