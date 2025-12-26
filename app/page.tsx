@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
@@ -13,6 +13,37 @@ import Modal from '@/components/ui/Modal';
 
 export default function Home() {
   const [isDemoOpen, setIsDemoOpen] = useState(false);
+  const [demoStep, setDemoStep] = useState('idle'); // idle, thinking, writing, done
+  const [typedText, setTypedText] = useState('');
+
+  // Demo Animation Logic
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => {
+    if (isDemoOpen) {
+      setDemoStep('thinking');
+      setTypedText('');
+
+      const thinkTimer = setTimeout(() => {
+        setDemoStep('writing');
+        const text = "AI가 작성한 블로그 포스트 초안입니다.\nAuto Content Manager를 사용하면\nSEO에 최적화된 글을 3초 만에 완성할 수 있습니다.";
+        let i = 0;
+        const typeTimer = setInterval(() => {
+          setTypedText(text.substring(0, i + 1));
+          i++;
+          if (i === text.length) {
+            clearInterval(typeTimer);
+            setDemoStep('done');
+          }
+        }, 50);
+        return () => clearInterval(typeTimer);
+      }, 1500); // 1.5s thinking
+
+      return () => clearTimeout(thinkTimer);
+    } else {
+      setDemoStep('idle');
+      setTypedText('');
+    }
+  }, [isDemoOpen]);
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -201,7 +232,7 @@ export default function Home() {
               <Button
                 variant="primary"
                 size="lg"
-                className="bg-white text-blue-600 hover:bg-blue-50 hover:text-blue-700 border-none px-10 py-4 text-xl shadow-2xl transition-all hover:scale-105"
+                className="bg-white text-blue-600 hover:bg-blue-50 font-bold border-none px-10 py-4 text-xl shadow-2xl transition-all hover:scale-105"
               >
                 무료로 시작하기 🚀
               </Button>
@@ -220,14 +251,36 @@ export default function Home() {
               <span className="w-2 h-2 bg-green-500 rounded-full"></span>
               <span>AI Writing Assistant</span>
             </div>
-            <div className="space-y-2">
-              <p className="text-gray-800 typing-effect">
-                AI가 입력하신 주제를 바탕으로 고품질 블로그 포스트를 작성하고 있습니다.
-                <br />
-                <span className="text-blue-600 font-medium">Auto Content Manager</span>는 마케팅 효율을 10배 높여줍니다.
-              </p>
-              <div className="h-2 bg-gray-200 rounded-full overflow-hidden w-full mt-4">
-                <div className="h-full bg-blue-500 animate-[width_2s_ease-out_infinite]" style={{ width: '60%' }}></div>
+            <div className="space-y-4">
+              {/* 1. User Input Mock */}
+              <div className={`flex justify-end transition-opacity duration-500 ${demoStep !== 'idle' ? 'opacity-100' : 'opacity-0'}`}>
+                <div className="bg-blue-600 text-white px-4 py-2 rounded-2xl rounded-tr-none text-sm max-w-[80%] shadow-md">
+                  "마케팅 효율을 높이는 AI 활용법"에 대한 글 써줘
+                </div>
+              </div>
+
+              {/* 2. AI Processing State */}
+              <div className="flex items-start space-x-3">
+                <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-blue-500 to-purple-600 flex items-center justify-center text-white text-xs font-bold shrink-0">
+                  AI
+                </div>
+                <div className="flex-1 space-y-2">
+                  {demoStep === 'thinking' && (
+                    <div className="flex space-x-1 items-center h-8 text-gray-400 text-sm">
+                      <span className="animate-bounce">●</span>
+                      <span className="animate-bounce delay-100">●</span>
+                      <span className="animate-bounce delay-200">●</span>
+                      <span className="ml-2 font-medium">생각 중...</span>
+                    </div>
+                  )}
+
+                  {(demoStep === 'writing' || demoStep === 'done') && (
+                    <div className="bg-gray-50 p-4 rounded-2xl rounded-tl-none border border-gray-100 text-gray-800 text-sm leading-relaxed shadow-sm">
+                      <pre className="whitespace-pre-wrap font-sans">{typedText}</pre>
+                      {demoStep === 'writing' && <span className="inline-block w-1.5 h-4 bg-blue-500 animate-pulse align-middle ml-1"></span>}
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
           </div>

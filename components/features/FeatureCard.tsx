@@ -19,7 +19,7 @@ export default function FeatureCard({ type, onClick }: FeatureCardProps) {
     return (
         <Card hover className="h-full">
             <CardHeader>
-                <div className={`inline-flex p-3 rounded-lg bg-gradient-to-r ${feature.color} mb-4`}>
+                <div className={`inline-flex ${feature.color === 'transparent' ? '' : 'p-3 rounded-lg bg-gradient-to-r'} ${feature.color} mb-4`}>
                     <span className="text-3xl">{feature.icon}</span>
                 </div>
                 <CardTitle>{feature.title}</CardTitle>

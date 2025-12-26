@@ -150,7 +150,7 @@ export const MAIN_FEATURES = [
         title: '블로그 포스트',
         description: 'SEO 최적화된 블로그 글을 몇 초 만에 작성하세요. 키워드와 톤을 선택하면 AI가 완벽한 초안을 만들어드립니다.',
         icon: '✍️',
-        color: 'from-blue-500 to-blue-600',
+        color: 'transparent',
     },
     {
         id: 'social',
@@ -166,7 +166,7 @@ export const MAIN_FEATURES = [
         title: '이메일 템플릿',
         description: '뉴스레터, 프로모션, 공지사항 등 목적에 맞는 이메일을 빠르게 작성하세요.',
         icon: '📧',
-        color: 'from-green-500 to-green-600',
+        color: 'transparent',
     },
     {
         id: 'product',
