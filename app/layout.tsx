@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "오토콘텐츠 - AI 기반 콘텐츠 자동 생성",
+  title: "Auto Content Manager - AI 기반 콘텐츠 자동 생성",
   description: "블로그, 소셜미디어, 이메일, 상품 설명을 AI로 몇 초 만에 생성하세요. 마케팅 콘텐츠 제작을 더 쉽고 빠르게.",
 };
 

@@ -11,8 +11,8 @@ export default function Footer() {
                     {/* 회사 정보 */}
                     <div className="col-span-1 md:col-span-2">
                         <div className="flex items-center space-x-2 mb-4">
-                            <span className="text-2xl">✨</span>
-                            <span className="text-xl font-bold gradient-text">오토콘텐츠</span>
+                            <span className="text-2xl">🤖</span>
+                            <span className="text-xl font-bold gradient-text">Auto Content Manager</span>
                         </div>
                         <p className="text-sm text-gray-600 mb-4">
                             AI 기반 자동 콘텐츠 생성 플랫폼으로<br />
@@ -92,7 +92,7 @@ export default function Footer() {
 
                 <div className="mt-8 pt-8 border-t border-gray-200">
                     <p className="text-sm text-gray-600 text-center">
-                        © {currentYear} 오토콘텐츠. All rights reserved.
+                        © {currentYear} Auto Content Manager. All rights reserved.
                     </p>
                 </div>
             </div>

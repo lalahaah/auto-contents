@@ -55,7 +55,7 @@ export const CONTENT_TYPES: Record<ContentType, {
     BLOG: {
         name: '블로그 포스트',
         description: 'SEO 최적화된 블로그 글을 작성하세요',
-        icon: '📝',
+        icon: '✍️',
         color: 'blue',
     },
     SOCIAL: {
@@ -67,7 +67,7 @@ export const CONTENT_TYPES: Record<ContentType, {
     EMAIL: {
         name: '이메일',
         description: '효과적인 이메일 템플릿을 생성하세요',
-        icon: '✉️',
+        icon: '📧',
         color: 'green',
     },
     PRODUCT: {
@@ -149,7 +149,7 @@ export const MAIN_FEATURES = [
         type: 'BLOG' as ContentType,
         title: '블로그 포스트',
         description: 'SEO 최적화된 블로그 글을 몇 초 만에 작성하세요. 키워드와 톤을 선택하면 AI가 완벽한 초안을 만들어드립니다.',
-        icon: '📝',
+        icon: '✍️',
         color: 'from-blue-500 to-blue-600',
     },
     {
@@ -165,7 +165,7 @@ export const MAIN_FEATURES = [
         type: 'EMAIL' as ContentType,
         title: '이메일 템플릿',
         description: '뉴스레터, 프로모션, 공지사항 등 목적에 맞는 이메일을 빠르게 작성하세요.',
-        icon: '✉️',
+        icon: '📧',
         color: 'from-green-500 to-green-600',
     },
     {

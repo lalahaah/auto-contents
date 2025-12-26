@@ -6,8 +6,8 @@ export default function AuthPage() {
         <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-blue-50 via-white to-purple-50 px-4">
             {/* 로고 */}
             <Link href="/" className="flex items-center space-x-2 mb-8">
-                <span className="text-3xl">✨</span>
-                <span className="text-2xl font-bold gradient-text">오토콘텐츠</span>
+                <span className="text-3xl">🤖</span>
+                <span className="text-2xl font-bold gradient-text">Auto Content Manager</span>
             </Link>
 
             {/* 인증 폼 */}

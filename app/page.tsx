@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Link from 'next/link';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
@@ -6,8 +7,11 @@ import PricingTable from '@/components/features/PricingTable';
 import TestimonialCard from '@/components/features/TestimonialCard';
 import Button from '@/components/ui/Button';
 import { TESTIMONIALS } from '@/lib/constants';
+import Modal from '@/components/ui/Modal';
 
 export default function Home() {
+  const [isDemoOpen, setIsDemoOpen] = useState(false);
+
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
@@ -35,11 +39,14 @@ export default function Home() {
                       무료로 시작하기 →
                     </Button>
                   </Link>
-                  <Link href="#features">
-                    <Button variant="outline" size="lg" className="text-lg px-8">
-                      기능 살펴보기
-                    </Button>
-                  </Link>
+                  <Button
+                    variant="outline"
+                    size="lg"
+                    className="text-lg px-8"
+                    onClick={() => setIsDemoOpen(true)}
+                  >
+                    데모 보기
+                  </Button>
                 </div>
                 <p className="mt-6 text-sm text-gray-500 flex items-center justify-center lg:justify-start gap-2">
                   <span className="flex items-center"><span className="text-green-500 mr-1">✓</span> 신용카드 불필요</span>
@@ -153,7 +160,7 @@ export default function Home() {
                 사용자들의 이야기
               </h2>
               <p className="text-lg text-gray-600">
-                이미 많은 분들이 오토콘텐츠로 더 효율적으로 일하고 있습니다.
+                이미 많은 분들이 Auto Content Manager로 더 효율적으로 일하고 있습니다.
               </p>
             </div>
 
@@ -166,19 +173,35 @@ export default function Home() {
         </section>
 
         {/* CTA 섹션 */}
-        <section className="py-20 bg-gradient-to-br from-blue-600 to-purple-600">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+        <section className="relative py-24 overflow-hidden">
+          {/* Background Image with Overlay */}
+          <div className="absolute inset-0 z-0">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1920&auto=format&fit=crop"
+              alt="Team Collaboration"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-blue-900/80 mix-blend-multiply"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+          </div>
+
+          <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 tracking-tight">
               지금 바로 시작하세요
             </h2>
-            <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+            <p className="text-xl text-gray-100 mb-10 max-w-2xl mx-auto leading-relaxed">
               몇 초 만에 가입하고, 바로 콘텐츠를 생성해보세요.
               <br />
-              신용카드 없이도 무료로 시작할 수 있습니다.
+              신용카드 없이도 <span className="text-yellow-300 font-semibold">100% 무료</span>로 시작할 수 있습니다.
             </p>
             <Link href="/auth">
-              <Button variant="primary" size="lg" className="bg-white text-blue-600 hover:bg-gray-100 text-lg px-8">
-                무료로 시작하기 →
+              <Button
+                variant="primary"
+                size="lg"
+                className="bg-white text-blue-600 hover:bg-blue-50 hover:text-blue-700 border-none px-10 py-4 text-xl shadow-2xl transition-all hover:scale-105"
+              >
+                무료로 시작하기 🚀
               </Button>
             </Link>
           </div>
@@ -186,7 +209,39 @@ export default function Home() {
       </main>
 
       <Footer />
-    </div>
+
+      {/* Demo Modal */}
+      <Modal isOpen={isDemoOpen} onClose={() => setIsDemoOpen(false)} title="AI 콘텐츠 생성 데모">
+        <div className="space-y-4">
+          <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
+            <div className="flex items-center space-x-2 mb-2 text-sm text-gray-500">
+              <span className="w-2 h-2 bg-green-500 rounded-full"></span>
+              <span>AI Writing Assistant</span>
+            </div>
+            <div className="space-y-2">
+              <p className="text-gray-800 typing-effect">
+                AI가 입력하신 주제를 바탕으로 고품질 블로그 포스트를 작성하고 있습니다.
+                <br />
+                <span className="text-blue-600 font-medium">Auto Content Manager</span>는 마케팅 효율을 10배 높여줍니다.
+              </p>
+              <div className="h-2 bg-gray-200 rounded-full overflow-hidden w-full mt-4">
+                <div className="h-full bg-blue-500 animate-[width_2s_ease-out_infinite]" style={{ width: '60%' }}></div>
+              </div>
+            </div>
+          </div>
+          <p className="text-center text-sm text-gray-500">
+            실제 서비스에서는 4가지 유형의 템플릿을 제공합니다.
+          </p>
+          <div className="flex justify-center mt-4">
+            <Link href="/auth" onClick={() => setIsDemoOpen(false)}>
+              <Button variant="primary" className="w-full">
+                무료로 체험해보기
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </Modal>
+    </div >
   );
 }
 

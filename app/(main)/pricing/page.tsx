@@ -2,8 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import Header from '@/components/layout/Header';
-import Footer from '@/components/layout/Footer';
+import Link from 'next/link';
 import PricingTable from '@/components/features/PricingTable';
 import Card from '@/components/ui/Card';
 import Button from '@/components/ui/Button';
@@ -39,8 +38,6 @@ export default function PricingPage() {
 
     return (
         <div className="min-h-screen flex flex-col">
-            <Header />
-
             <main className="flex-1 py-20">
                 {/* 헤더 섹션 */}
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-16">
@@ -180,7 +177,6 @@ export default function PricingPage() {
                 </div>
             </main>
 
-            <Footer />
 
             <AlertModal isOpen={isOpen} onClose={closeNotification} message={message} />
         </div>

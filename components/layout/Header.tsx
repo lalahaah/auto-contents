@@ -25,8 +25,8 @@ export default function Header() {
                     {/* 로고 */}
                     <div className="flex items-center">
                         <Link href="/" className="flex items-center space-x-2">
-                            <span className="text-2xl">✨</span>
-                            <span className="text-xl font-bold gradient-text">오토콘텐츠</span>
+                            <span className="text-2xl">🤖</span>
+                            <span className="text-xl font-bold gradient-text">Auto Content Manager</span>
                         </Link>
                     </div>
 
