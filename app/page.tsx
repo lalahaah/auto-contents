@@ -232,7 +232,7 @@ export default function Home() {
               <Button
                 variant="primary"
                 size="lg"
-                className="bg-white text-blue-600 hover:bg-blue-50 font-bold border-none px-10 py-4 text-xl shadow-2xl transition-all hover:scale-105"
+                className="!bg-white !text-blue-600 hover:bg-gray-100 border-none px-10 py-4 text-xl shadow-2xl transition-all hover:scale-105 font-bold"
               >
                 무료로 시작하기 🚀
               </Button>
